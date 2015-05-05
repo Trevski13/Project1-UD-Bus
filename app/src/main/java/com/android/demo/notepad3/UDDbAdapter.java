@@ -1,4 +1,4 @@
-package edu.udel.udmap;
+package com.android.demo.notepad3;
 
 /**
  * Created by Holly on 4/29/2015.
