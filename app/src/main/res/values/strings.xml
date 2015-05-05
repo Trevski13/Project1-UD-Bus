@@ -6,6 +6,10 @@
     <string name="menu_delete">Delete Note</string>
     <string name="title">Title</string>
     <string name="body">Body</string>
+    <string name="code">Building Code</string>
+    <string name="name">Name</string>
+    <string name="latitude">Latitude</string>
+    <string name="longitude">Longitude</string>
     <string name="confirm">Confirm</string>
     <string name="edit_note">Edit Note</string>
 </resources>

@@ -36,25 +36,25 @@ public class Notepadv3 extends ListActivity {
     private static final int INSERT_ID = Menu.FIRST;
     private static final int DELETE_ID = Menu.FIRST + 1;
 
-    private NotesDbAdapter mDbHelper;
+    private UDDbAdapter mDbHelper;
 
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.notes_list);
-        mDbHelper = new NotesDbAdapter(this);
+        mDbHelper = new UDDbAdapter(this);
         mDbHelper.open();
         fillData();
         registerForContextMenu(getListView());
     }
 
     private void fillData() {
-        Cursor notesCursor = mDbHelper.fetchAllNotes();
+        Cursor notesCursor = mDbHelper.fetchAllData();
         startManagingCursor(notesCursor);
 
         // Create an array to specify the fields we want to display in the list (only TITLE)
-        String[] from = new String[]{NotesDbAdapter.KEY_TITLE};
+        String[] from = new String[]{UDDbAdapter.KEY_CODE};
 
         // and an array of the fields we want to bind those fields to (in this case just text1)
         int[] to = new int[]{R.id.text1};
@@ -95,7 +95,7 @@ public class Notepadv3 extends ListActivity {
         switch(item.getItemId()) {
             case DELETE_ID:
                 AdapterContextMenuInfo info = (AdapterContextMenuInfo) item.getMenuInfo();
-                mDbHelper.deleteNote(info.id);
+                mDbHelper.deleteData(info.id);
                 fillData();
                 return true;
         }
@@ -111,7 +111,7 @@ public class Notepadv3 extends ListActivity {
     protected void onListItemClick(ListView l, View v, int position, long id) {
         super.onListItemClick(l, v, position, id);
         Intent i = new Intent(this, NoteEdit.class);
-        i.putExtra(NotesDbAdapter.KEY_ROWID, id);
+        i.putExtra(UDDbAdapter.KEY_ROWID, id);
         startActivityForResult(i, ACTIVITY_EDIT);
     }
 

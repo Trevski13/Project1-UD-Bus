@@ -11,4 +11,4 @@
         	android:layout_height="wrap_content"
         	android:text="@string/no_notes"/>
 </LinearLayout>
-<!-- From: file:/F:/Dropbox/Documents/School/CISC%20367%20(Cloud%20Computing)/Project%201%20(2)/app/src/main/res/layout/notes_list.xml -->
+<!-- From: file:/F:/Dropbox/Documents/School/CISC%20367%20(Cloud%20Computing)/Project1-UD-Bus/app/src/main/res/layout/notes_list.xml -->

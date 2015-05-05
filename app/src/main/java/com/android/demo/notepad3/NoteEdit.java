@@ -25,30 +25,35 @@ import android.widget.EditText;
 
 public class NoteEdit extends Activity {
 
-    private EditText mTitleText;
-    private EditText mBodyText;
+    private EditText mCodeText;
+    private EditText mNameText;
+    private EditText mLatitudeText;
+    private EditText mLongitudeText;
+
     private Long mRowId;
-    private NotesDbAdapter mDbHelper;
+    private UDDbAdapter mDbHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mDbHelper = new NotesDbAdapter(this);
+        mDbHelper = new UDDbAdapter(this);
         mDbHelper.open();
 
         setContentView(R.layout.note_edit);
         setTitle(R.string.edit_note);
 
-        mTitleText = (EditText) findViewById(R.id.title);
-        mBodyText = (EditText) findViewById(R.id.body);
+        mCodeText = (EditText) findViewById(R.id.code);
+        mNameText = (EditText) findViewById(R.id.name);
+        mLatitudeText = (EditText) findViewById(R.id.latitude);
+        mLongitudeText = (EditText) findViewById(R.id.longitude);
 
         Button confirmButton = (Button) findViewById(R.id.confirm);
 
         mRowId = (savedInstanceState == null) ? null :
-            (Long) savedInstanceState.getSerializable(NotesDbAdapter.KEY_ROWID);
+            (Long) savedInstanceState.getSerializable(UDDbAdapter.KEY_ROWID);
 		if (mRowId == null) {
 			Bundle extras = getIntent().getExtras();
-			mRowId = extras != null ? extras.getLong(NotesDbAdapter.KEY_ROWID)
+			mRowId = extras != null ? extras.getLong(UDDbAdapter.KEY_ROWID)
 									: null;
 		}
 
@@ -66,12 +71,16 @@ public class NoteEdit extends Activity {
 
     private void populateFields() {
         if (mRowId != null) {
-            Cursor note = mDbHelper.fetchNote(mRowId);
+            Cursor note = mDbHelper.fetchData(mRowId);
             startManagingCursor(note);
-            mTitleText.setText(note.getString(
-                    note.getColumnIndexOrThrow(NotesDbAdapter.KEY_TITLE)));
-            mBodyText.setText(note.getString(
-                    note.getColumnIndexOrThrow(NotesDbAdapter.KEY_BODY)));
+            mCodeText.setText(note.getString(
+                    note.getColumnIndexOrThrow(UDDbAdapter.KEY_CODE)));
+            mNameText.setText(note.getString(
+                    note.getColumnIndexOrThrow(UDDbAdapter.KEY_NAME)));
+            mCodeText.setText(note.getString(
+                    note.getColumnIndexOrThrow(UDDbAdapter.KEY_LATITUDE)));
+            mNameText.setText(note.getString(
+                    note.getColumnIndexOrThrow(UDDbAdapter.KEY_LONGITUDE)));
         }
     }
 
@@ -79,7 +88,7 @@ public class NoteEdit extends Activity {
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         saveState();
-        outState.putSerializable(NotesDbAdapter.KEY_ROWID, mRowId);
+        outState.putSerializable(UDDbAdapter.KEY_ROWID, mRowId);
     }
 
     @Override
@@ -95,16 +104,18 @@ public class NoteEdit extends Activity {
     }
 
     private void saveState() {
-        String title = mTitleText.getText().toString();
-        String body = mBodyText.getText().toString();
+        String code = mCodeText.getText().toString();
+        String name = mNameText.getText().toString();
+        String latitude = mLatitudeText.getText().toString();
+        String longitude = mLongitudeText.getText().toString();
 
         if (mRowId == null) {
-            long id = mDbHelper.createNote(title, body);
+            long id = mDbHelper.createData(code, name, latitude, longitude);
             if (id > 0) {
                 mRowId = id;
             }
         } else {
-            mDbHelper.updateNote(mRowId, title, body);
+            mDbHelper.updateData(mRowId, code, name, latitude, longitude);
         }
     }
 

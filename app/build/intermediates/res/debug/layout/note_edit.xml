@@ -9,25 +9,46 @@
 		android:layout_height="wrap_content">
 
 		<TextView android:layout_width="wrap_content"
-			android:layout_height="wrap_content" 
-			android:text="@string/title" />
-		<EditText android:id="@+id/title" 
+			android:layout_height="wrap_content"
+            android:text="Building Code" />
+			//android:text="@string/title" />
+		<EditText android:id="@+id/code"
 		  android:layout_width="wrap_content"
 			android:layout_height="wrap_content" 
 			android:layout_weight="1"/>
 	</LinearLayout>
 
 	<TextView android:layout_width="wrap_content"
-		android:layout_height="wrap_content" 
-		android:text="@string/body" />
-	<EditText android:id="@+id/body" android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+        android:text="Name" />
+		//android:text="@string/body" />
+	<EditText android:id="@+id/name" android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:layout_weight="1"
 		android:scrollbars="vertical" />
+
+    <TextView android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Latitude" />
+    //android:text="@string/body" />
+    <EditText android:id="@+id/latitude" android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:scrollbars="vertical" />
+
+    <TextView android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Longitude" />
+    //android:text="@string/body" />
+    <EditText android:id="@+id/longitude" android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:scrollbars="vertical" />
+
 	
 	<Button android:id="@+id/confirm" 
 	  android:text="@string/confirm"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content" />
 
-</LinearLayout><!-- From: file:/F:/Dropbox/Documents/School/CISC%20367%20(Cloud%20Computing)/Project%201%20(2)/app/src/main/res/layout/note_edit.xml -->
+</LinearLayout><!-- From: file:/F:/Dropbox/Documents/School/CISC%20367%20(Cloud%20Computing)/Project1-UD-Bus/app/src/main/res/layout/note_edit.xml -->

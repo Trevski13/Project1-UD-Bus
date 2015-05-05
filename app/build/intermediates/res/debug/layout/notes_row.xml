@@ -2,4 +2,4 @@
 <TextView android:id="@+id/text1" xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"/>
-<!-- From: file:/F:/Dropbox/Documents/School/CISC%20367%20(Cloud%20Computing)/Project%201%20(2)/app/src/main/res/layout/notes_row.xml -->
+<!-- From: file:/F:/Dropbox/Documents/School/CISC%20367%20(Cloud%20Computing)/Project1-UD-Bus/app/src/main/res/layout/notes_row.xml -->
